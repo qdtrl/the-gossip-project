@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   def index
-    @user = User.find(params[:id])
+    @users = User.all
   end
 
   def show
-    @users = User.all
+    @user = User.find(params[:id])
+    @city = City.find(@user.city_id)
+    @gossips = User.find(@user.id).gossips
   end
 
   def new

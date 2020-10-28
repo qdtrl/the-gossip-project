@@ -1,2 +1,123 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>mere</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0; padding: 0;
+      }
+      body {
+        display : table;
+        width: 100%;
+      }
+      footer {
+        display : table-row;
+        height: 50px; /* à titre d'exemple */
+        background-color: #555;
+        color: white;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container text-center">    
+      <div class="row">
+        <div class="col-sm-3 well">
+          <div class="well">
+            <table class="table">
+              <thead>
+                <td><%= @user.first_name%> <%= @user.last_name%></td>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= @user.age%> ans</td>
+                </tr>
+                <tr>
+                  <td><%= @city.name%>, <%= @city.zip_code%></td>
+                </tr>
+                <tr>
+                  <td><%= @user.description %></td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+          <div class="well">
+            <p>Mes Tags</p>
+            <p>
+              <span class="label label-default">News</span>
+              <span class="label label-primary">W3Schools</span>
+              <span class="label label-success">Labels</span>
+              <span class="label label-info">Football</span>
+              <span class="label label-warning">Gaming</span>
+              <span class="label label-danger">Friends</span>
+            </p>
+          </div>
+          <!-- <div class="alert alert-success fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <p><strong>Ey!</strong></p>
+            People are looking at your profile. Find out who.
+          </div> -->
+        </div>
+
+        
+
+
+        <div class="col-sm-7">
+          <div class="col-sm-12">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="well">
+                  <%= button_to "Creer un gossip", new_gossip_path, :method => "get", class:'btn btn-success' %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% @gossips.each do |gossip| %>
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="well">
+                  <p>
+                    <%= gossip.title %><br>
+                    <small><%= gossip.created_at %></small>
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-9">
+                <div class="well">
+                  <p><%= gossip.content %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+
+
+
+
+
+
+        <div class="col-sm-2 well">
+          <div class="thumbnail">
+            <p>Upcoming Events:</p>
+            <img src="paris.jpg" alt="Paris" width="400" height="300">
+            <p><strong>Paris</strong></p>
+            <p>Fri. 27 November 2015</p>
+            <button class="btn btn-primary">Info</button>
+          </div>      
+          <div class="well">
+            <p>ADS</p>
+          </div>
+          <div class="well">
+            <p>ADS</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

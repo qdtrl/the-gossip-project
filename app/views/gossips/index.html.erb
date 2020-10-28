@@ -1,2 +1,57 @@
-<h1>Gossips#index</h1>
-<p>Find me in app/views/gossips/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Accueil</title>
+  </head>
+  <body>
+    <div class="mb-0 jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Welcome to my Gossip Project</h1>
+        <p class="lead">La communauté, le partage, les potins : les copains quoi !</p>
+      </div>
+    </div>
+    <div id="carouselExampleControls" class="carousel slide p-3 mb-2 mt-0 bg-info text-white" data-ride="carousel">
+      <h4>Les potins à la une !</h4>
+      <div class="mx-auto carousel-inner" style="width: 300px;">
+        <div class="carousel-item active p-3 mb-2 bg-info text-white">
+          <h3><%=link_to @gossips[-1].title, gossip_path(@gossips[-1].id)%></h3>
+          <p><%= @gossips[-1].content %>
+        </div>
+        <%i = - 1%>
+        <%while i >= -11 %>
+        <div class="carousel-item p-3 mb-2 bg-info text-white">
+          <h3 class="alert-link"><%=link_to @gossips[i].title, gossip_path(@gossips[i].id)%></h3>
+          <p><%= @gossips[i].content %> </p>
+          <% i -= 1%>
+        </div>
+        <%end%>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <!-- Listes des gossips -->
+    <div class="d-flex justify-content-center">
+      <div class="col-sm-4">
+        <div class="list-group">
+          <% @gossips.each do |gossip| %>
+            <a href="<%= gossip_path(gossip.id) %>" class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><%= gossip.title %></h5>
+                <small><%= gossip.created_at %></small>
+              </div>
+              <p class="mb-1">
+                <%= gossip.content %> 
+              </p>
+            </a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
