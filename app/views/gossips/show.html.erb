@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Test cetet</title>
+    <title><%= @gossip.title%></title>
   </head>
   <body>
     <div class="d-flex justify-content-center">
       <div class="card col-sm-4 m-4">
         <%= @gossip.title%><br>
         <%= @gossip.content%><br>
-        <%= @gossip.created_at%> by <%= link_to "voir le créateur", user_path(@gossip.user_id)%><br>
-        <%= link_to "Modifier un gossip", edit_gossip_path, class: "btn btn-primary" %><%= link_to "Delete", list_path(@list), :method => :delete, :confirm => "Are you sure?" %>
-
+        <small>
+          <%= @gossip.created_at%> by <%= link_to "voir le créateur", user_path(@gossip.user_id)%>
+        </small>
+        <div class="row justify-content-center">
+          <%= link_to "Modifier un gossip", edit_gossip_path, class: "btn btn-primary" %><%= link_to "Delete", gossip_path(@gossip.id), :class => "btn btn-danger", :method => :delete, :confirm => "Are you sure?" %>
+        </div>
+        <% @gossip.comments.each do |comment| %>
+        <div class="well">
+          <p><%= comment.content %></p>
+        </div>
+        <% end %>
+        <div class="well">
+          <%= button_to "+", new_gossip_comment_path(@gossip.id), :method => "get", class:'btn btn-success' %>
+        </div>
       </div>
     </div>
   </body>

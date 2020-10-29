@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gossip Project</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -38,6 +37,9 @@
           </li>
           <li class="nav-item">
             <%= link_to "Gossips", gossips_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Cities", cities_path, class:"nav-link" %>
           </li>
         </ul>
       </div>

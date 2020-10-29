@@ -12,7 +12,7 @@ class GossipsController < ApplicationController
   end
 
   def create
-    gossip = Gossip.create(post_params, )
+    gossip = Gossip.create(post_params)
     redirect_to gossip_path(gossip.id)
   end
 
@@ -30,7 +30,9 @@ class GossipsController < ApplicationController
   end
 
   def destroy
-     
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    redirect_to gossips_path
   end
 
   private

@@ -1,0 +1,4 @@
+
+
+<%= link_to "V", edit_comment_path, class: "btn btn-primary" %><%= link_to "O", edit_comment_path, class: "btn btn-success" %><%= link_to "Delete", gossip_path(@gossip.id), :class => "btn btn-danger", :method => :delete, :confirm => "Are you sure?" %>
+<%= button_to "+", new_comment_path, :method => "get", class:'btn btn-success' %>

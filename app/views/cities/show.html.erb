@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @city.name%></title>
+  </head>
+  <body>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-sm-3 well">
+          <div class="card">
+            <h5 class="card-header">Les informations sur <%= @city.name%></h5>
+            <p class="m-2">
+              - <%= @city.name%><br>
+              - <%= @city.zip_code%>
+            </p>
+            <h5 class="card-header">Ses gosseurs</h5>
+            <div class="m-2" >
+              <% @users.each do |user| %>
+              <div class="list-group-item list-group-item-action">
+                <%= link_to user.first_name + " " + user.last_name, user_path(user.id), class: "btn" %>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>    
+        <div class="col-sm-4">
+          <div class="list-group">
+            <% @gossips.each do |gossip| %>
+              <a href="<%= gossip_path(gossip.id) %>" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1"><%= gossip.title %></h5>
+                  <small><%= gossip.created_at %></small>
+                </div>
+                <p class="mb-1">
+                  <%= gossip.content %> 
+                </p>
+              </a>
+            <% end %>
+          </div>
+        </div>
+      </div>               
+    </div>
+  </body>
+</html>

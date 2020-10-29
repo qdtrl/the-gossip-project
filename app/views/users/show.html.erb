@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>mere</title>
+    <title><%= @user.first_name%> <%= @user.last_name%></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -37,7 +37,7 @@
                   <td><%= @user.age%> ans</td>
                 </tr>
                 <tr>
-                  <td><%= @city.name%>, <%= @city.zip_code%></td>
+                  <td><%= link_to @user.city.name, city_path(@user.city.id), class: "btn" %></td>
                 </tr>
                 <tr>
                   <td><%= @user.description %></td>
