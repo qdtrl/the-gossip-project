@@ -10,9 +10,20 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
+    @cities = City.all
   end
 
   def create
+    @user = User.new(params.permit(:first_name, :last_name, :email, :age, :description, :password,))
+    @user.city_id = 1
+    if @user.save
+      flash[:success] = "Compte bien créé !"
+      redirect_to root_path
+    else
+      flash[:failure] = "Erreur lors de la création du compte !"
+      render 'new'
+    end
   end
 
   def edit

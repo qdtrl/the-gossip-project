@@ -47,6 +47,8 @@ name = []
   User.create!(
     first_name: name[0],
     last_name: name[1],
+    email: Faker::Internet.email,
+    password_digest: "seed",
     description: Faker::TvShows::Suits.quote,
     age: Faker::Number.between(7, 77),
     city_id: City.all.sample.id

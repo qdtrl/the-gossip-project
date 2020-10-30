@@ -41,6 +41,34 @@
           <li class="nav-item">
             <%= link_to "Cities", cities_path, class:"nav-link" %>
           </li>
+          <!-- <li class="nav-item dropdown"> -->
+            <!-- <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Session
+            </a> -->
+            <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
+              <% if current_user %>
+              <li class="nav-item">
+                <%= link_to "Se déconnecter", session_path(session.id), method: :delete %></a>
+              </li>
+              <%else%>
+              <li class="nav-item">
+                <%= link_to "Créer un compte", new_user_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <!-- <div class="dropdown-divider"></div> -->
+                <%= link_to "Se connecter", new_session_path, class:"nav-link" %>
+              </li>
+              <%end%>
+            </div>
+          </li>
         </ul>
       </div>
     </nav>
