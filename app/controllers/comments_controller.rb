@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user, only: [:index, :show]
   def create
     comment = Comment.create(post_params)
     redirect_to comment_path(comment.id)
